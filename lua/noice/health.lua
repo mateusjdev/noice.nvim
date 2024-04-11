@@ -102,13 +102,13 @@ function M.check(opts)
   end
 
   if opts.checkhealth then
-    if not Util.module_exists("notify") then
-      log.warn("Noice needs nvim-notify for routes using the `notify` view")
+    if not Util.module_exists("fidget") then
+      log.warn("Noice needs fidget for routes using the `notify` view")
       if not opts.checkhealth then
         return
       end
     else
-      log.ok("**nvim-notify** is installed")
+      log.ok("**fidget** is installed")
     end
 
     if vim.o.shortmess:find("S") then

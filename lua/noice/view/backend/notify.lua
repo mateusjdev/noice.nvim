@@ -33,11 +33,11 @@ local defaults = {
 local NotifyView = View:extend("NotifyView")
 
 function NotifyView.dismiss()
-  require("notify").dismiss({ pending = true, silent = true })
+  require("fidget.notification").clear()
 end
 
 function NotifyView:is_available()
-  return pcall(_G.require, "notify") == true
+  return pcall(_G.require, "fidget") == true
 end
 
 function NotifyView:update_options()
@@ -166,7 +166,7 @@ function NotifyView:_notify(msg)
     content = nil
   end
 
-  local id = require("notify")(content, level, opts)
+  local id = require("fidget.notification").notify(content, level, opts)
   self.notif = id
   for _, m in ipairs(msg.messages) do
     m.opts.notify_id = id
